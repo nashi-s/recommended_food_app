@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    food:
+    user: 
+    attributes:
+      post:
+      content: 内容
+      user: ユーザー
