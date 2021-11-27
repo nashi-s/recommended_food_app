@@ -1,12 +1,15 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.order(:created_at)
+    @foods = Food.includes(:user).order(:created_at)
   end
 
   def new
+    @food = Food.new #(food_params)
   end
 
   def create
+    food = current_user.foods.create!(food_params)
+    redirect_to food
   end
 
   def show
@@ -19,5 +22,12 @@ class FoodsController < ApplicationController
   end
 
   def destroy
+  end
+
+
+  private
+
+  def food_params
+    params.require(:food).permit(:name, :comment)
   end
 end

@@ -1,8 +1,9 @@
 ja:
   activerecord:
-    food:
-    user: 
+    models:
+      food:
+      user: 
     attributes:
-      post:
-      content: 内容
-      user: ユーザー
+      food:
+        comment: 内容
+        user: ユーザー
