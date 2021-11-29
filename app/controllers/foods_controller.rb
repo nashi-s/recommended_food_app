@@ -1,5 +1,4 @@
 class FoodsController < ApplicationController
-
   before_action :set_food, only: %i[edit update destroy]
 
   def index
@@ -7,7 +6,7 @@ class FoodsController < ApplicationController
   end
 
   def new
-    @food = Food.new #(food_params)
+    @food = Food.new # (food_params)
   end
 
   def create
@@ -19,15 +18,18 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    @food.update!(food_params)
+    redirect_to @food
   end
 
   def destroy
+    food = Food.find(params[:id])
+    food.destroy!
+    redirect_to root_path
   end
-
 
   private
 
@@ -38,7 +40,7 @@ class FoodsController < ApplicationController
   def set_food
     # 「自分の投稿」の中から URL の :id に対応する投稿を探す
     # 「他人の投稿」の場合はエラーを出す
-    @food = current_user.foods.find_by(params[id: :id])
+    @food = current_user.foods.find_by(id: params[:id])
     redirect_to root_path, alert: "権限がありません" if @food.nil?
   end
 end

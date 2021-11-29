@@ -1,13 +1,13 @@
 ja:
   activerecord:
     models:
-      food:
-      user: 
+      food: 料理
     attributes:
-      food:
+      food: 料理
+        name: 料理名
         comment: 内容
         user: ユーザー
         
-  time:
-    formats:
-      default: "%Y年%-m月%-d日(%a) %-H時%-M分%-S秒"
+
+
+        
