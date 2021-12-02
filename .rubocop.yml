@@ -17,6 +17,8 @@ AllCops:
     - "config/puma.rb"
     - "config/environments/development.rb"
     - "config/environments/production.rb"
+    - "app/uploaders/image_uploader.rb"
+
 
 
 # 日本語のコメントを許可
