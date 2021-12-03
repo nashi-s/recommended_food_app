@@ -22,8 +22,22 @@ user3 = User.create!(email: "tanaka@example.com", password: "password")
 
 
 
-Food.create!(name: "沖縄そば",comment: "コメント", user_id: user2.id)
-Food.create!(name: "海ぶどう",comment: "コメント", user_id: user3.id)
-Food.create!(name: "ゴーヤー",comment: "コメント", user_id: user3.id)
+food1 = user2.foods.create!(content: "沖縄そば")
+food2 = user1.foods.create!(content: "海ぶどう")
+food3 = user3.foods.create!(content: "ゴーヤーチャンプルー")
+food4 = user3.foods.create!(content: "サーターアンダギー")
+food5 = user1.foods.create!(content: "タコライス")
+
+
+food1.likes.create!(user_id: user1.id)
+food1.likes.create!(user_id: user3.id)
+food2.likes.create!(user_id: user2.id)
+food3.likes.create!(user_id: user1.id)
+food4.likes.create!(user_id: user1.id)
+food4.likes.create!(user_id: user2.id)
+food5.likes.create!(user_id: user3.id)
+
+# ログイン時に使用するアカウント（変数への代入は不要）
+User.create!(email: email, password: password)
 
 puts "初期データの投入に成功しました！"
