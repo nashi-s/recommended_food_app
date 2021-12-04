@@ -6,7 +6,7 @@ class Food < ApplicationRecord
   validates :name, presence: true
   # food を user が「いいね！」しているときは「true」，「いいね」していないときは「false」
   def liked_by?(user)
-    likes.exists?(user_id: user.id)
+    likes.any? { |like| like.user_id == user.id }
   end
 
   mount_uploader :image, ImageUploader
